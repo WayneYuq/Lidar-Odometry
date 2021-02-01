@@ -2,7 +2,7 @@ data_path: /workspace/assignments/01-lidar-odometry/src/lidar_localization   # �
 
 # 匹配
 # TODO: implement your custom registration method and add it here
-registration_method: NDT   # 选择点云匹配方法，目前支持：ICP, NDT
+registration_method: MYNDT   # 选择点云匹配方法，目前支持：ICP, NDT, MYNDT
 
 # 局部地图
 key_frame_distance: 2.0 # 关键帧距离
@@ -27,6 +27,12 @@ NDT:
     step_size : 0.1
     trans_eps : 0.01
     max_iter : 30
+MYNDT:
+    res : 1.0
+    step_size : 0.1
+    trans_eps : 0.01
+    max_iter : 30
+    sear_methods : DIRECT7
 ICP_SVD:
     max_corr_dist : 1.2
     trans_eps : 0.01
