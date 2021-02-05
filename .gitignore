@@ -5,6 +5,7 @@ install
 logs
 output
 *.pcd
+src/lidar_localization/slam_data/key_frames
 ground_truth.txt
 laser_odom.txt
 .vscode
