@@ -1,18 +1,7 @@
-# Sensor Fusion: Lidar Odometry -- 多传感器融合定位与建图: 激光里程计
+# 激光前端里程计算法
 
-深蓝学院, 多传感器融合定位与建图, 第1节Lidar Odometry代码框架.
-
----
-
-## Overview
-
-本作业旨在实现主流的激光前端里程计算法.
-
----
 
 ## Getting Started
-
-### 及格要求: 跑通提供的工程框架
 
 启动Docker后, 打开浏览器, 进入Web Workspace. 启动Terminator, 将两个Shell的工作目录切换如下:
 
@@ -49,10 +38,6 @@ rosbag play kitti_lidar_only_2011_10_03_drive_0027_synced.bag
 
 <img src="doc/demo.png" alt="Frontend Demo" width="100%">
 
-### 良好要求: 使用evo计算出分段统计误差和整体轨迹误差
-
-此处以Docker Workspace为例. 在Terminator中添加新窗口, 切换至如下目录:
-
 ```bash
 cd /workspace/assignments/01-lidar-odometry/src/lidar_localization/slam_data/trajectory
 ```
@@ -63,13 +48,3 @@ cd /workspace/assignments/01-lidar-odometry/src/lidar_localization/slam_data/tra
 
 * 作为Ground Truth的RTK轨迹估计, ground_truth.txt
 * Lidar Frontend轨迹估计, laser_odom.txt
-
-请使用上述两个文件, 完成**evo**的评估
-
-### 优秀要求: 自己实现点云匹配方法，而不是直接调用pcl库的匹配方法，并使用evo计算出指标
-
-# 高能预警: 该作业需要足够的C++与ROS开发基础. 如果没有, 欢迎发挥主观能动性, 在有限的时间内积极Catch Up, 或者选修深蓝学院的相关课程, 留待务实基础之后再来学习.
-
-为了鼓励真正有志研究框架的同学自主探索, 此处仅在有限的几处增加了`TODO`关键字进行思路提示.
-
-请以此为基础, 理解框架结构, 完成作业实现.
