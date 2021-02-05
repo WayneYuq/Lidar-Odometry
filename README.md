@@ -21,6 +21,7 @@
 在**上侧**的Shell中, 输入如下命令, **编译catkin_workspace**
 
 ```bash
+cd /workspace/assignments/01-lidar-odometry
 # build
 catkin config --install && catkin build
 ```
@@ -37,6 +38,7 @@ roslaunch lidar_localization front_end.launch
 在**下侧**的Shell中, 输入如下命令, **Play KITTI ROS Bag**. 两个数据集均可用于完成课程, 对代码功能的运行没有任何影响, 区别在于第一个有Camera信息
 
 ```bash
+cd /workspace/data/kitti
 # play ROS bag, full KITTI:
 rosbag play kitti_2011_10_03_drive_0027_synced.bag
 # play ROS bag, lidar-only KITTI:

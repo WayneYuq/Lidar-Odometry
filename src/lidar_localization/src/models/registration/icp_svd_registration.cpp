@@ -165,17 +165,31 @@ void ICPSVDRegistration::GetTransform(
     Eigen::Matrix4f &transformation_
 ) {
     const size_t N = xs.size();
+    // find centroids of mu_x and mu_y:
+    Eigen::Vector3f mu_x = Eigen::Vector3f::Zero(), mu_y = Eigen::Vector3f::Zero();
+    for (size_t i = 0; i < N; i++)
+    {
+        mu_x += xs[i];
+        mu_y += ys[i];
+    }
+    mu_x /= N;
+    mu_y /= N;
 
-    // TODO -- find centroids of mu_x and mu_y:
+    // build H:
+    Eigen::Matrix3f H = Eigen::Matrix3f::Zero();
+    for (size_t i = 0; i < N; i++)
+        H += (ys[i] - mu_y) * (xs[i] - mu_x).transpose();
 
-    // TODO -- build H:
+    // solve R:
+    Eigen::JacobiSVD<Eigen::MatrixXf> svd(H, Eigen::ComputeFullV | Eigen::ComputeFullU);
+    Eigen::MatrixXf R = svd.matrixV() * (svd.matrixU().transpose());
 
-    // TODO -- solve R:
-
-    // TODO -- solve t:
+    // solve t:
+    Eigen::Vector3f t = mu_x - R * mu_y;
 
     // set output:
-    transformation_.setIdentity();
+    transformation_ << R, t,
+                       0,0,0, 1;
 }
 
 bool ICPSVDRegistration::IsSignificant(
